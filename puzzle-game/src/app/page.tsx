@@ -217,12 +217,12 @@ const Page = () => {
                       <Button
                         onClick={startGame}
                         disabled={!currentBook}
-                        className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-base py-5 flex-1 shadow-sm hover:shadow-md transition-all duration-200 ease-out font-medium tracking-wide rounded-xl transition-transform duration-300"
+                        className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-base py-5 flex-1 shadow-sm hover:shadow-md transition-all duration-200 ease-out font-medium tracking-wide rounded-xl transition-transform duration-300 hover:scale-105"
                         size="lg"
                       >
                         Začni igro
                       </Button>
-                      <Button variant="outline" onClick={goBackToSelection} className="bg-white hover:bg-gray-300 text-gray-800 border-gray-300 hover:border-gray-400 text-base py-5 flex-1 shadow-sm hover:shadow-md transition-all duration-200 ease-out font-medium tracking-wide rounded-xl" size="lg">Nazaj</Button>
+                      <Button variant="outline" onClick={goBackToSelection} className="bg-white hover:bg-gray-300 text-gray-800 border-gray-300 hover:border-gray-400 text-base py-5 flex-1 shadow-sm hover:shadow-md ease-out font-medium tracking-wide rounded-xl transition-transform duration-300 hover:scale-105" size="lg">Nazaj</Button>
                     </div>
                   </div>
                 </div>
@@ -270,12 +270,12 @@ const Page = () => {
               <div className="flex sm:flex-row gap-3 w-full">
                 <Button
                   onClick={playAgain}
-                  className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-5 hover:scale-105 transition-transform duration-300 rounded-xl shadow-md w-full sm:w-auto justify-center text-base"
+                  className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-5 rounded-xl shadow-md w-full sm:w-auto justify-center text-base flex-1 transition-transform duration-300 hover:scale-105"
                   size={isMobile ? "lg" : "default"}
                 >
                   Igraj ponovno
                 </Button>
-                <Button variant="outline" onClick={goBackToSelection} className="bg-white hover:bg-gray-300 text-gray-800 border-gray-300 hover:border-gray-400 text-base py-5 flex-1 shadow-sm hover:shadow-md transition-all duration-200 ease-out font-medium tracking-wide rounded-xl transition-transform duration-300 hover:scale-105" size="lg">Nazaj</Button>
+                <Button variant="outline" onClick={goBackToSelection} className="bg-white hover:bg-gray-300 text-gray-800 border-gray-300 hover:border-gray-400 text-base px-6 py-5 font-medium rounded-xl flex-1 transition-transform duration-300 hover:scale-105" size="lg">Nazaj</Button>
               </div>
             </div>
           </Card>
