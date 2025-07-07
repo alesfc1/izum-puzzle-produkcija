@@ -1,6 +1,6 @@
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"src/app/layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"src\\app\\layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /* cyrillic-ext */
 @font-face {
   font-family: 'Inter';
@@ -414,9 +414,6 @@
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
   }
-  .mr-2 {
-    margin-right: calc(var(--spacing) * 2);
-  }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -440,9 +437,6 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-  }
-  .block {
-    display: block;
   }
   .flex {
     display: flex;
@@ -494,9 +488,6 @@
   }
   .max-h-\[90vh\] {
     max-height: 90vh;
-  }
-  .min-h-\[calc\(100vh-2rem\)\] {
-    min-height: calc(100vh - 2rem);
   }
   .min-h-screen {
     min-height: 100vh;
@@ -814,9 +805,6 @@
   .bg-blue-100 {
     background-color: var(--color-blue-100);
   }
-  .bg-blue-600 {
-    background-color: var(--color-blue-600);
-  }
   .bg-blue-600\/30 {
     background-color: color-mix(in srgb, oklch(54.6% 0.245 262.881) 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -840,9 +828,6 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-gray-600) 40%, transparent);
     }
-  }
-  .bg-gray-700 {
-    background-color: var(--color-gray-700);
   }
   .bg-gray-700\/50 {
     background-color: color-mix(in srgb, oklch(37.3% 0.034 259.733) 50%, transparent);
@@ -1052,12 +1037,6 @@
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
   }
-  .pb-6 {
-    padding-bottom: calc(var(--spacing) * 6);
-  }
-  .pb-8 {
-    padding-bottom: calc(var(--spacing) * 8);
-  }
   .pl-5 {
     padding-left: calc(var(--spacing) * 5);
   }
@@ -1209,9 +1188,6 @@
   .text-purple-300 {
     color: var(--color-purple-300);
   }
-  .text-red-500 {
-    color: var(--color-red-500);
-  }
   .text-red-700 {
     color: var(--color-red-700);
   }
@@ -1356,20 +1332,6 @@
       }
     }
   }
-  .hover\:bg-blue-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-blue-700);
-      }
-    }
-  }
-  .hover\:bg-gray-100 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-100);
-      }
-    }
-  }
   .hover\:bg-gray-200 {
     &:hover {
       @media (hover: hover) {
@@ -1434,13 +1396,6 @@
       @media (hover: hover) {
         --tw-gradient-to: var(--color-blue-700);
         --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-      }
-    }
-  }
-  .hover\:text-blue-300 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-blue-300);
       }
     }
   }

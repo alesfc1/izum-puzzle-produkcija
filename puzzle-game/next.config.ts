@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-  domains: ['d.cobiss.net'],
+  domains: ['devd.int.izum.si', 'd.cobiss.net']
 },
 };
 
