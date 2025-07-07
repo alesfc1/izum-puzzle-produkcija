@@ -14,7 +14,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { useToast } from "@/components/ui/use-toast";
 import { AppHeader } from '@/components/AppHeader';
-// import slike from '../../db/essential_book_data.json';
+import bookData from '../../db/essential_book_data.json';
 import { ScoreResult } from '@/utils/scoringSystem';
 import BookList from '../components/BookList';
 import SearchBar from '../components/SearchBar';
@@ -27,50 +27,12 @@ interface Book {
 }
 
 // Sample books data with placeholder images
-const sampleBooks: Book[] = [
-  {
-    id: 1,
-    title: "Kako živali spijo",
-    author: "Petra Bartíková",
-    coverUrl: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=600&fit=crop"
-  },
-  {
-    id: 2,
-    title: "Mačja pravljica",
-    author: "Ana Novak",
-    coverUrl: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=600&fit=crop"
-  },
-  {
-    id: 3,
-    title: "Živali v naravi",
-    author: "Marko Žagar",
-    coverUrl: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d?w=400&h=600&fit=crop"
-  },
-  {
-    id: 4,
-    title: "Mala mucka",
-    author: "Sara Kovač",
-    coverUrl: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400&h=600&fit=crop"
-  },
-  {
-    id: 5,
-    title: "Jelenček v gozdu",
-    author: "Luka Mihelič",
-    coverUrl: "https://images.unsplash.com/photo-1439886183900-e79ec0057170?w=400&h=600&fit=crop"
-  },
-  {
-    id: 6,
-    title: "Čarobne zgodbe",
-    author: "Nina Hudnik",
-    coverUrl: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=600&fit=crop"
-  },
-  {
-    id: 7,
-    title: "Mali princ",
-    author: "Antoine de Saint-Exupéry",
-    coverUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop"
-  }
-];
+const sampleBooks: Book[] = bookData.map((book, index) => ({
+  id: index + 1,
+  title: book.title,
+  author: book.author,
+  coverUrl: book.cover_url,
+}));
 
 
 export default function Home() {
