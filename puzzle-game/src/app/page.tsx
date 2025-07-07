@@ -19,6 +19,23 @@ import { ScoreResult } from '@/utils/scoringSystem';
 import BookList from '../components/BookList';
 import SearchBar from '../components/SearchBar';
 
+// COBISS API function
+const searchCobiss = async (query: string): Promise<any> => {
+  const url = `https://plusbeta.cobiss.net/cobiss/api/si/sl/search/cobib?q=${encodeURIComponent(query)}`;
+  
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("COBISS fetch error:", error);
+    throw error;
+  }
+};
+
 interface Book {
   id: number;
   title: string;
@@ -26,14 +43,13 @@ interface Book {
   coverUrl: string;
 }
 
-// Sample books data with placeholder images
+// Sample books data from local JSON file
 const sampleBooks: Book[] = bookData.map((book, index) => ({
   id: index + 1,
   title: book.title,
   author: book.author,
   coverUrl: book.cover_url,
 }));
-
 
 export default function Home() {
   return <Page />;
@@ -63,13 +79,52 @@ const Page = () => {
   const [completionTime, setCompletionTime] = useState(0);
   const [bookSelection, setBookSelection] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [cobissBooks, setCobissBooks] = useState<Book[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [showCobissResults, setShowCobissResults] = useState(false);
   const isMobile = useIsMobile();
   const { toast } = useToast();
 
-  const filteredBooks = sampleBooks.filter(book =>
+  // Prioritize COBISS results, fallback to local books when no search
+  const allBooks = cobissBooks.length > 0 ? cobissBooks : sampleBooks;
+  const filteredBooks = allBooks.filter(book =>
     book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     book.author.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Function to search COBISS and convert results to Book format
+  const handleCobissSearch = async (query: string) => {
+    if (!query.trim()) {
+      setCobissBooks([]);
+      return;
+    }
+
+    setIsSearching(true);
+    try {
+      const cobissData = await searchCobiss(query);
+      // Pravilna pretvorba glede na COBISS API odgovor
+      const items = cobissData?.value?.searchItems || [];
+      const convertedBooks: Book[] = items.map((item: any, index: number) => ({
+        id: item.id || index,
+        title: item.primary || 'Unknown Title',
+        author: item.secondary || 'Unknown Author',
+        coverUrl: item.coverUrl || '/placeholder-book-cover.svg',
+      }));
+      setCobissBooks(convertedBooks);
+      toast({
+        title: "COBISS Search",
+        description: `Found ${convertedBooks.length} books`,
+      });
+    } catch (error) {
+      console.error('COBISS search failed:', error);
+      toast({
+        title: "Search Error", 
+        description: "Failed to search COBISS database",
+      });
+    } finally {
+      setIsSearching(false);
+    }
+  };
 
   const handleBookSelect = (book: Book) => {
     setCurrentBook(book);
@@ -109,12 +164,55 @@ const Page = () => {
     setGameCompleted(false);
   };
 
+  // Clear COBISS results when search term is empty
+  useEffect(() => {
+    if (searchTerm.trim() === '') {
+      setCobissBooks([]);
+    }
+  }, [searchTerm]);
+
+  // Debounced COBISS search
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (searchTerm.trim().length > 2) {
+        handleCobissSearch(searchTerm);
+      }
+    }, 500); // 500ms delay
+
+    return () => clearTimeout(timeoutId);
+  }, [searchTerm]);
+
+  // Load initial COBISS data on component mount
+  useEffect(() => {
+    handleCobissSearch('tiha')//default search term
+  }, []);
+
   if (bookSelection) {
     return (
       <div className="min-h-screen bg-gray-900 p-4 flex flex-col items-center justify-start">
         <AppHeader />
         <div className="w-full max-w-4xl">
           <SearchBar onSearch={setSearchTerm} />
+          {isSearching && (
+            <div className="text-center mb-4">
+              <LoadingSpinner />
+              <p className="text-gray-300 mt-2">Searching COBISS database...</p>
+            </div>
+          )}
+          {cobissBooks.length > 0 && !isSearching && (
+            <div className="mb-4 text-center">
+              <p className="text-gray-300">
+                Showing books from COBISS database. Search for specific books above.
+              </p>
+            </div>
+          )}
+          {cobissBooks.length === 0 && !isSearching && searchTerm.trim() === '' && (
+            <div className="mb-4 text-center">
+              <p className="text-gray-300">
+                Showing local books. Start typing to search COBISS database.
+              </p>
+            </div>
+          )}
           <BookList books={filteredBooks} onBookClick={handleBookSelect} />
         </div>
       </div>
@@ -195,7 +293,7 @@ const Page = () => {
           <Card className="bg-gray-800 border-gray-700 shadow-md p-6">
             <div className="text-center text-white text-2xl mb-4">🎉 Čestitke! 🎉</div>
             <ScoreDisplay
-              scoreResult={finalScore}
+              scoreResult={finalScore!}
               completionTime={completionTime}
               rows={selectedDifficulty.rows}
               cols={selectedDifficulty.cols}
