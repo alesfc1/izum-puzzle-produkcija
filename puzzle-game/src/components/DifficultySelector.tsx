@@ -1,11 +1,6 @@
 import React from 'react';
 import { cn } from "@/lib/utils";
-
-type Difficulty = {
-  cols: number;
-  rows: number;
-  label: string;
-};
+import { Difficulty } from "@/types/difficulty";
 
 interface DifficultySelectorProps {
   difficulties: Difficulty[];
@@ -16,7 +11,7 @@ interface DifficultySelectorProps {
 
 export const DifficultySelector: React.FC<DifficultySelectorProps> = ({
   difficulties,
-  selected,
+  selected = difficulties[0], // privzeta vrednost
   onChange,
   className
 }) => {

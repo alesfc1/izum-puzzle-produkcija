@@ -11,19 +11,11 @@ import { ScoreDisplay } from '@/components/ScoreDisplay';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { useToast } from "@/components/ui/use-toast";
-import { AppHeader } from '@/components/AppHeader';
 import bookData from '../../db/essential_book_data.json';
 import { ScoreResult } from '@/utils/scoringSystem';
 import BookList from '../components/BookList';
 import SearchBar from '../components/SearchBar';
-
-
-interface Book {
-  id: number;
-  title: string;
-  author: string;
-  coverUrl: string;
-}
+import { Book } from '@/types/book';
 
 // Sample books data from local JSON file
 const sampleBooks: Book[] = bookData.map((book, index) => ({
@@ -182,7 +174,6 @@ const Page = () => {
   if (bookSelection) {
     return (
       <div className="min-h-screen bg-gray-900 p-4 flex flex-col items-center justify-start">
-        <AppHeader />
         <div className="w-full max-w-4xl">
           <SearchBar onSearch={setSearchTerm} />
           <BookList books={filteredBooks} onBookClick={handleBookSelect} isSearching={isSearching} />
@@ -194,7 +185,6 @@ const Page = () => {
   if (!gameStarted && currentBook) {
     return (
       <div className="min-h-screen bg-gray-900 p-4 flex flex-col items-center justify-start">
-        <AppHeader />
         <div className="w-full max-w-4xl mt-6">
           <Card className="shadow-lg border-2 border-gray-700 bg-gray-800 w-full">
             <CardContent className="py-12 px-8">
@@ -241,7 +231,6 @@ const Page = () => {
   if (gameStarted && currentBook && !gameCompleted) {
     return (
       <div className="min-h-screen bg-gray-900 p-4 flex flex-col items-center">
-        <AppHeader />
         <div className="w-full max-w-4xl">
           <PuzzleGame
             imageSrc={currentBook.coverUrl}
@@ -260,7 +249,6 @@ const Page = () => {
   if (gameCompleted && currentBook && finalScore) {
     return (
       <div className="min-h-screen bg-gray-900 p-4 flex flex-col items-center">
-        <AppHeader />
         <div className="w-full max-w-4xl space-y-6">
           <Card className="bg-gray-800 border-gray-700 shadow-md p-6">
             <div className="text-center text-white text-2xl mb-4">🎉 Čestitke! 🎉</div>

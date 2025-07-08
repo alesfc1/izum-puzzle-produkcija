@@ -1,8 +1,8 @@
 import React from 'react';
-import { BookCover } from '@/types/book';
+import { Book } from '@/types/book';
 
 interface BookInfoProps {
-  book: BookCover | null;
+  book: Book | null;
 }
 
 export const BookInfo: React.FC<BookInfoProps> = ({ book }) => {

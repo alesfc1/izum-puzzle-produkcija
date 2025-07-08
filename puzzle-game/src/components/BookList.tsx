@@ -1,13 +1,7 @@
 import React from 'react';
 import BookCard from './BookCard';
 import {LoadingSpinner} from './ui/loading-spinner';
-
-interface Book {
-  id: number;
-  title: string;
-  author: string;
-  coverUrl: string;
-}
+import {Book} from '@/types/book';
 
 interface BookListProps {
   books: Book[];
