@@ -201,7 +201,7 @@ const Page = () => {
                     alt={currentBook.title}
                     width={250}
                     height={380}
-                    className="rounded-md shadow-md object-cover"
+                    className="object-cover rounded-md shadow-md transform-gpu will-change-transform transition-all duration-300 ease-out group-hover:scale-105 cursor-pointer"
                   />
                 </div>
                 <div className="space-y-4">

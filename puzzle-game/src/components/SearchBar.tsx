@@ -23,7 +23,7 @@ const SearchBar = ({ onSearch, placeholder = "Poišči knjigo..." }: SearchBarPr
       <div className="relative">
         <button
             type="submit"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white hover:bg-gray-700 h-10 w-10 flex items-center justify-center rounded-full focus:outline-none"
+            className="absolute left-150 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white hover:bg-gray-700 h-10 w-10 flex items-center justify-center rounded-full focus:outline-none"
             aria-label="Search"
         >
           <Search className="h-5 w-5" />
@@ -33,7 +33,7 @@ const SearchBar = ({ onSearch, placeholder = "Poišči knjigo..." }: SearchBarPr
           value={query}
           onChange={handleInputChange}
           placeholder={placeholder}
-          className="w-full pl-16 pr-4 py-4 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          className="w-full pl-12 pr-4 py-4 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
         />
       </div>
     </form>
