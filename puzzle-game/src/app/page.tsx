@@ -62,7 +62,7 @@ const Page = () => {
   const [bookSelection, setBookSelection] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [cobissBooks, setCobissBooks] = useState<Book[]>([]);
-  const [isSearching] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
   const isMobile = useIsMobile();
   const { toast } = useToast();
 
@@ -75,17 +75,27 @@ const Page = () => {
 
   // Function to search COBISS and convert results to Book format
   const handleCobissSearch = async (query: string) => {
-    const cobissData = await searchCobiss(query);
-    console.log(cobissData);
-    // Pravilna pretvorba glede na COBISS API odgovor
-    const items = cobissData?.value?.searchItems || [];
-    const convertedBooks: Book[] = items.map((item, index) => ({
-      id: item.id || index,
-      title: item.primary || 'Unknown Title',
-      author: item.secondary || 'Unknown Author',
-      coverUrl: item.coverUrl || '/placeholder-book-cover.svg',
-    }));
-    setCobissBooks(convertedBooks);
+    setIsSearching(true);
+    try{
+      const cobissData = await searchCobiss(query);
+    
+      const items = cobissData?.value?.searchItems || [];
+      const convertedBooks: Book[] = items.map((item, index) => ({
+        id: item.id || index,
+        title: item.primary || 'Unknown Title',
+        author: item.secondary || 'Unknown Author', 
+        coverUrl: item.coverUrl || '/placeholder-book-cover.svg',
+      }));
+      setCobissBooks(convertedBooks);
+    } catch (error) {
+        console.error("Error fetching COBISS data:", error);
+        toast({
+            title: "Napaka pri iskanju",
+            description: "Prišlo je do napake pri pridobivanju podatkov iz COBISS."
+        });
+    } finally {
+      setIsSearching(false);
+    }
   };
 
   interface CobissResponse {
@@ -175,13 +185,7 @@ const Page = () => {
         <AppHeader />
         <div className="w-full max-w-4xl">
           <SearchBar onSearch={setSearchTerm} />
-          {isSearching && (
-            <div className="text-center mb-4">
-              <LoadingSpinner />
-              <p className="text-gray-300 mt-2">Searching COBISS database...</p>
-            </div>
-          )}
-          <BookList books={filteredBooks} onBookClick={handleBookSelect} />
+          <BookList books={filteredBooks} onBookClick={handleBookSelect} isSearching={isSearching} />
         </div>
       </div>
     );
@@ -246,7 +250,7 @@ const Page = () => {
             onComplete={handleGameComplete}
           />
           <div className="text-center mt-6">
-            <Button variant="outline" onClick={goBackToSelection}>Nazaj na izbiro knjige</Button>
+            <Button variant="outline" className='transition-transform duration-300 hover:scale-105 hover:bg-gray-300 text-gray-800 border-gray-300 hover:border-gray-400' onClick={goBackToSelection}>Nazaj na izbiro knjige</Button>
           </div>
         </div>
       </div>
