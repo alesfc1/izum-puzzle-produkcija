@@ -28,7 +28,7 @@ const BookList = ({ books, onBookClick, isSearching, showInitialPrompt }: BookLi
           <img
             src="/jigsaw-puzzle-295434.svg"
             alt="Search Icon"
-            className="mx-auto w-120 h-120"
+            className="mt-5 mx-auto w-100 h-100"
           />
         </div>
       </div>

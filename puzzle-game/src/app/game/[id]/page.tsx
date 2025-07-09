@@ -112,6 +112,7 @@ const onBackToSearch = () => {
         onBackToSearch={onBackToSearch}
         difficulty={selectedDifficulty!}
         completionTime={completionTime}
+        book={currentBook!}
       />
     );
   }
