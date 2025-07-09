@@ -7,9 +7,10 @@ interface BookListProps {
   books: Book[];
   onBookClick?: (book: Book) => void;
   isSearching?: boolean;
+  showInitialPrompt?: boolean;
 }
 
-const BookList = ({ books, onBookClick, isSearching }: BookListProps) => {
+const BookList = ({ books, onBookClick, isSearching, showInitialPrompt }: BookListProps) => {
   if (isSearching) {
     return (
       <div className="text-center mb-4">
@@ -18,7 +19,22 @@ const BookList = ({ books, onBookClick, isSearching }: BookListProps) => {
       </div>
     )
   }
-  else if (books.length === 0) {
+  else if (showInitialPrompt) {
+    return (
+      <div className="text-center py-12">
+        <div className="text-gray-400 text-lg mb-2">Vnesite ime knjige ali avtorja</div>
+        <div className="text-gray-500 text-sm">Začnite z iskanjem</div>
+        <div>
+          <img
+            src="/jigsaw-puzzle-295434.svg"
+            alt="Search Icon"
+            className="mx-auto w-120 h-120"
+          />
+        </div>
+      </div>
+    );
+  }
+  else if (books.length <= 0) {
     return (
       <div className="text-center py-12">
         <div className="text-gray-400 text-lg mb-2">Ni najdenih knjig</div>

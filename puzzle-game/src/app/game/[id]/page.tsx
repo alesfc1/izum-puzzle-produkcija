@@ -18,9 +18,19 @@ interface Props {
     onBack: () => void;
 }
 
-export default function PreGamePage({ selectedDifficulty, setSelectedDifficulty= () => {}, onStart, onBack }: Props) {
+const DIFFICULTIES: Difficulty[] = [
+    { cols: 2, rows: 2, label: "2×2 (Zelo lahko)" },
+    { cols: 2, rows: 3, label: "2×3 (Lahko)" },
+    { cols: 3, rows: 3, label: "3×3 (Srednje)" },
+    { cols: 3, rows: 4, label: "3×4 (Težje)" },
+    { cols: 4, rows: 4, label: "4×4 (Težko)" },
+    { cols: 4, rows: 5, label: "4×5 (Zelo težko)" },
+  ];
+
+export default function PreGamePage({ onStart, onBack }: Props) {
     const { id } = useParams() as { id: string };
     const [currentBook, setCurrentBook] = useState<Book | null>(null);
+    const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty>(DIFFICULTIES[0]);
     const { toast } = useToast();
     console.log("ID iz URL-ja:", id);
 

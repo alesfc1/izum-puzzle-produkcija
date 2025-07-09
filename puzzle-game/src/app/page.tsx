@@ -58,6 +58,8 @@ const Page = () => {
   const isMobile = useIsMobile();
   const { toast } = useToast();
 
+  console.log("Selected difficulty:", selectedDifficulty);
+
   // Prioritize COBISS results, fallback to local books when no search
   const allBooks = cobissBooks.length > 0 ? cobissBooks : sampleBooks;
   const filteredBooks = allBooks.filter((book: Book) =>
