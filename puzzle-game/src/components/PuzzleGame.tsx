@@ -410,7 +410,7 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
       <Button 
         variant="outline" 
         onClick={toggleSolution}
-        className="mb-2 hover:scale-105 transition-all duration-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 dark:border-gray-300"
+        className="mb-2 hover:scale-105 transition-all duration-300 bg-white text-gray-900 hover:bg-gray-300 border-gray-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-300 dark:border-gray-300"
       >
         {showSolution ? 'Skrij rešitev' : 'Prikaži rešitev'}
       </Button>

@@ -8,7 +8,6 @@ import { Book } from "@/types/book";
 
 export default function SearchPage() {
   const [searchTerm, setSearchTerm] = useState(""); // Upravljanje iskalnega izraza
-  const [books, setBooks] = useState<Book[]>([]); // Knjige iz API-ja
   const [isSearching, setIsSearching] = useState(false); // Stanje iskanja
   const [hasSearched, setHasSearched] = useState(false); // Ali je uporabnik že iskal
   const [gameStarted, setGameStarted] = useState(false);
@@ -18,15 +17,6 @@ export default function SearchPage() {
   const [cobissBooks, setCobissBooks] = useState<Book[]>([]);
   const { toast } = useToast();
 
-  /* Sample books data from local JSON file
-  const sampleBooks: Book[] = bookData.map((book) => ({
-    id: book.id,
-    title: book.title,
-    author: book.author,
-    coverUrl: book.cover_url,
-  })); */
-
-  // Book list can be empty initially;
   const filteredBooks = cobissBooks.length !== 0
     ? cobissBooks.filter((book: Book) =>
       book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -126,8 +116,7 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 p-4 flex flex-col items-center justify-start">
-      <div className="w-full max-w-4xl">
+    <div className="bg-gray-900 p-4 flex flex-col items-center justify-start">
         <SearchBar onSearch={handleSearch} />
         <BookList
           books={filteredBooks}
@@ -135,7 +124,6 @@ export default function SearchPage() {
           isSearching={isSearching}
           showInitialPrompt={!hasSearched}
         />
-      </div>
     </div>
   );
 }

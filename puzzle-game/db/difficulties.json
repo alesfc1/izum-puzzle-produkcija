@@ -1,0 +1,32 @@
+[
+    {
+        "cols": 2,
+        "rows": 2,
+        "label": "2×2 (Zelo lahko)"
+    },
+    {
+        "cols": 2,
+        "rows": 3,
+        "label": "2×3 (Lahko)"
+    },
+    {
+        "cols": 3,
+        "rows": 3,
+        "label": "3×3 (Srednje)"
+    },
+    {
+        "cols": 3,
+        "rows": 4,
+        "label": "3×4 (Težje)"
+    },
+    {
+        "cols": 4,
+        "rows": 4,
+        "label": "4×4 (Težko)"
+    },
+    {
+        "cols": 4,
+        "rows": 5,
+        "label": "4×5 (Zelo težko)"
+    }
+]
