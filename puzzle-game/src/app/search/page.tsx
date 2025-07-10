@@ -17,19 +17,12 @@ export default function SearchPage() {
   const [cobissBooks, setCobissBooks] = useState<Book[]>([]);
   const { toast } = useToast();
 
-  const filteredBooks = cobissBooks.length !== 0
-    ? cobissBooks.filter((book: Book) =>
-      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    : [];
-
   // Function to search COBISS and convert results to Book format
   const handleCobissSearch = async (query: string) => {
     setIsSearching(true);
     try {
       const cobissData = await searchCobiss(query);
-
+      console.log("Prejeti podatki iz COBISS:", cobissData);
       const items = cobissData?.value?.searchItems || [];
       const convertedBooks: Book[] = items.map((item, index) => ({
         id: (item.id || index).toString(),
@@ -37,6 +30,7 @@ export default function SearchPage() {
         author: item.secondary || 'No author',
         coverUrl: item.coverUrl || 'No cover url',
       }));
+      console.log("Pretvorjene knjige:", convertedBooks);
       setCobissBooks(convertedBooks);
     } catch (error) {
       console.error("Error fetching COBISS data:", error);
@@ -114,12 +108,11 @@ export default function SearchPage() {
       setHasSearched(true);
     }
   };
-console.log("Filtered Books:", filteredBooks);
   return (
     <div className="bg-gray-900 p-4 flex flex-col items-center justify-start">
         <SearchBar onSearch={handleSearch} />
         <BookList
-          books={filteredBooks}
+          books={cobissBooks}
           onBookClick={handleBookSelect}
           isSearching={isSearching}
           showInitialPrompt={!hasSearched}

@@ -22,76 +22,80 @@ export default function GamePage() {
 
   const handleCobissBook = async (id: string) => {
     try {
-        const cobissData = await bookCobiss(id);
-        const book = {
-            id: cobissData.id || "ID ni na voljo",
-            title: cobissData.primary || "Naslov ni na voljo",
-            author: cobissData.secondary || "Avtor ni na voljo",
-            coverUrl: cobissData.coverUrl || "Slika ni na voljo",
-            addon02: cobissData.addon02 || "Opis ni na voljo"
-        };
-        setCurrentBook(book);
+      const cobissData = await bookCobiss(id);
+      const book = {
+        id: cobissData.id || "ID ni na voljo",
+        title: cobissData.primary || "Naslov ni na voljo",
+        author: cobissData.secondary || "Avtor ni na voljo",
+        coverUrl: cobissData.coverUrl || "Slika ni na voljo",
+        addon02: cobissData.addon02 || "Opis ni na voljo"
+      };
+      setCurrentBook(book);
     } catch (error) {
-        console.error("Error fetching COBISS book:", error);
-        toast({
-            title: "Napaka pri pridobivanju podatkov o knjigi",
-            description: "Prišlo je do napake pri pridobivanju podatkov iz COBISS."
-        });
+      console.error("Error fetching COBISS book:", error);
+      toast({
+        title: "Napaka pri pridobivanju podatkov o knjigi",
+        description: "Prišlo je do napake pri pridobivanju podatkov iz COBISS."
+      });
     }
-}
+  }
 
-interface CobissBookResponse {
+  interface CobissBookResponse {
     id?: string;
     primary?: string;
     secondary?: string;
     coverUrl?: string;
     addon02?: string;
-}
+  }
 
-// COBISS API function
-const bookCobiss = async (id: string): Promise<CobissBookResponse> => {
+  // COBISS API function
+  const bookCobiss = async (id: string): Promise<CobissBookResponse> => {
     const response = await fetch(`/api/${id}`);
     const data = await response.json();
     console.log("Prejeti podatki iz COBISS:", data);
     console.log("ID: ", data.id, "Naslov: ", data.primary, "Avtor: ", data.secondary, "Slika: ", data.coverUrl);
     return {
-        ...data
+      ...data
     }
-};
+  };
 
-useEffect(() => {
+  useEffect(() => {
     if (id) {
-        handleCobissBook(id);
+      handleCobissBook(id);
     } else {
-        toast({
-            title: "Napaka",
-            description: "ID knjige ni bil najden v URL-ju."
-        });
+      toast({
+        title: "Napaka",
+        description: "ID knjige ni bil najden v URL-ju."
+      });
     }
-}, [id, toast]);
+  }, [id, toast]);
 
-const onBackToSearch = () => {
+  const onBackToSearch = () => {
     setCurrentBook(undefined);
     window.location.href = "/search";
-}
-
-const openCobiss = (id: string) => {
-  if(id !== "" || id !== undefined || id !== null) {
-    const url = "https://plusbeta.cobiss.net/cobiss/si/sl/data/cobib/"
-      window.open(url + id);
   }
-}
+
+  const openCobiss = (id: string) => {
+    if (id !== "" || id !== undefined || id !== null) {
+      const url = "https://plusbeta.cobiss.net/cobiss/si/sl/data/cobib/"
+      window.open(url + id);
+    }
+  }
 
   if (stage === "pregame") {
     return (
-      <PreGameView
-        currentBook={currentBook || { id: "", title: "", author: "", coverUrl: ""}}
-        selectedDifficulty={selectedDifficulty || {"cols": 2, "rows": 2, "label": "2×2 (Zelo lahko)"}}
-        setSelectedDifficulty={setSelectedDifficulty}
-        onStart={() => setStage("game")}
-        onBackToSearch={onBackToSearch}
-        onOpenCobiss={openCobiss}
-      />
+      currentBook?.coverUrl == "Slika ni na voljo" ? (
+        <div className="loading flex items-center justify-center"><p>Ne najdem slike na knjigi s COBISS id: {id}</p></div>
+      ) : (
+        <PreGameView
+          currentBook={currentBook || { id: "", title: "", author: "", coverUrl: "" }}
+          selectedDifficulty={selectedDifficulty || { "cols": 2, "rows": 2, "label": "2×2 (Zelo lahko)" }}
+          setSelectedDifficulty={setSelectedDifficulty}
+          onStart={() => setStage("game")}
+          onBackToSearch={onBackToSearch}
+          onOpenCobiss={openCobiss}
+        />
+      )
     );
   }
 
