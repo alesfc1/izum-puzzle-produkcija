@@ -34,7 +34,8 @@ const BookList = ({ books, onBookClick, isSearching, showInitialPrompt }: BookLi
       </div>
     );
   }
-  else if (books.length <= 0) {
+  else if (!isSearching && books.length <= 0) {
+    console.log(books)
     return (
       <div className="text-center py-12">
         <div className="text-gray-400 text-lg mb-2">Ni najdenih knjig</div>

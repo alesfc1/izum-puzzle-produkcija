@@ -114,7 +114,7 @@ export default function SearchPage() {
       setHasSearched(true);
     }
   };
-
+console.log("Filtered Books:", filteredBooks);
   return (
     <div className="bg-gray-900 p-4 flex flex-col items-center justify-start">
         <SearchBar onSearch={handleSearch} />

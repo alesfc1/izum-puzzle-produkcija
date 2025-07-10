@@ -1,0 +1,11 @@
+@media (max-height: 649px){
+    .loading {
+      min-height: 300px;
+    }
+  }
+
+@media (min-height: 650px) {
+  .loading {
+    min-height: 500px;
+  }
+}

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import PreGameView from "../../../components/PreGameView";
 import GameView from "../../../components/GameView";
 import GameCompleteView from "../../../components/GameCompleteView";
@@ -19,7 +19,6 @@ export default function GamePage() {
   const [completionTime, setCompletionTime] = useState(0);
   const { toast } = useToast();
   const { id } = useParams() as { id: string };
-  console.log("ID iz URL-ja:", id);
 
   const handleCobissBook = async (id: string) => {
     try {
@@ -76,6 +75,13 @@ const onBackToSearch = () => {
     window.location.href = "/search";
 }
 
+const openCobiss = (id: string) => {
+  if(id !== "" || id !== undefined || id !== null) {
+    const url = "https://plusbeta.cobiss.net/cobiss/si/sl/data/cobib/"
+      window.open(url + id);
+  }
+}
+
   if (stage === "pregame") {
     return (
       <PreGameView
@@ -84,6 +90,7 @@ const onBackToSearch = () => {
         setSelectedDifficulty={setSelectedDifficulty}
         onStart={() => setStage("game")}
         onBackToSearch={onBackToSearch}
+        onOpenCobiss={openCobiss}
       />
     );
   }
