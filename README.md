@@ -41,23 +41,20 @@ Spletna aplikacija za sestavljanje sestavljank iz naslovnic knjig v COBISS Plus.
   - **Radix UI** za dostopne komponente
 
 - **Backend & Shramba**:
-  - **Firebase** za avtentikacijo in shranjevanje podatkov
   - **Next.js API Routes** za strežniško logiko
   - **LocalStorage** za lokalno shranjevanje statistike
 
 - **Orodja za razvoj**:
   - **Node.js**
-  - **Jest** za testiranje
   - **ESLint** in **Prettier** za kakovost kode
   - **Git** za upravljanje različic
-  - **Docker** za virtualizacijo
 
 
 ## Navodila za zagon in vzpostavitev sistema
 
 1. **Klonirajte repozitorij**
     ```bash
-    git clone https://github.com/Praktikum-II-IZUM/izum-gamification.git
+    git clone https://github.com/alesfc1/izum-puzzle-produkcija
     ```
 
 2. **Premaknite se v mapo projekta**
@@ -75,19 +72,6 @@ Spletna aplikacija za sestavljanje sestavljank iz naslovnic knjig v COBISS Plus.
       yarn install --legacy-peer-deps
       ```
 
-4. **Nastavite okoljske spremenljivke**
-    - Ustvarite datoteko `.env.local` v korenski mapi projekta.
-    - Dodajte naslednje konfiguracije:
-    ```bash
-    NEXT_PUBLIC_FIREBASE_API_KEY=#api key
-    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=#auth domain
-    NEXT_PUBLIC_FIREBASE_PROJECT_ID=#project id
-    NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=#storage bucket
-    NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=#messaging sender id
-    NEXT_PUBLIC_FIREBASE_APP_ID=#app id
-    MEASUREMENT_ID=#measurement id
-    ```
-
 5. **Zaženite razvojni strežnik**
     ```bash
     npm run dev
@@ -96,34 +80,9 @@ Spletna aplikacija za sestavljanje sestavljank iz naslovnic knjig v COBISS Plus.
     ```bash
     yarn dev
     ```
-
-6. **Zagon z Dockerjem (izbirno)**
-    - Zgradite Docker kontejner in sliko: 
-      ```bash
-      docker compose up --build
-      ```
-
+    
 7. **Odprite aplikacijo**
     - Obiščite [http://localhost:3000](http://localhost:3000) v vašem brskalniku.
-
-8. **Testiranje**
-    - Testiranje se lahko izvede z uporabo 
-    ```bash
-    npm test
-    ```
-    ali 
-    ```bash
-    npm run test
-    ```
-    ali
-    ```bash
-    yarn test
-    ```
-
-## Produkcija
-
-- **Render**: https://izum-gamification.onrender.com/
-- **Vercel**: https://izum-gamification-delta.vercel.app/
 
 ## Kontakt
 
