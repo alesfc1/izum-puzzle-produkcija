@@ -53,7 +53,7 @@ export default function GamePage() {
     const response = await fetch(`/api/${id}`);
     const data = await response.json();
     console.log("Prejeti podatki iz COBISS:", data);
-    console.log("ID: ", data.id, "Naslov: ", data.primary, "Avtor: ", data.secondary, "Slika: ", data.coverUrl);
+    console.log("ID: ", data.id, "Naslov: ", data.primary, "Avtor: ", data.secondary, "Slika: ", data.coverUrl, "Opis: ", data.addon02);
     return {
       ...data
     }
@@ -124,6 +124,7 @@ export default function GamePage() {
         difficulty={selectedDifficulty!}
         completionTime={completionTime}
         book={currentBook!}
+        onOpenCobiss={openCobiss}
       />
     );
   }

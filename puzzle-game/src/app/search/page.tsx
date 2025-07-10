@@ -30,7 +30,6 @@ export default function SearchPage() {
         author: item.secondary || 'No author',
         coverUrl: item.coverUrl || 'No cover url',
       }));
-      console.log("Pretvorjene knjige:", convertedBooks);
       setCobissBooks(convertedBooks);
     } catch (error) {
       console.error("Error fetching COBISS data:", error);
@@ -58,7 +57,7 @@ export default function SearchPage() {
   const searchCobiss = async (query: string): Promise<CobissResponse> => {
     const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
     const data = await response.json();
-    console.log(data);
+    console.log("Data: ", data);
     return {
       ...data,
       value: {

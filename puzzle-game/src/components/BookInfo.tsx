@@ -7,6 +7,7 @@ interface BookInfoProps {
 
 export const BookInfo: React.FC<BookInfoProps> = ({ book }) => {
   if (!book) return null;
+  console.log("BookInfo:", book);
 
   return (
     <div className="flex flex-col space-y-4">
@@ -19,9 +20,10 @@ export const BookInfo: React.FC<BookInfoProps> = ({ book }) => {
         </div>
       </div>
       
-      {book.description && (
+      {/* Opis */}
+      {book.addon02 && (
         <div className="pt-2">
-          <span className="text-gray-200">{book.description}</span>
+          <span className="text-gray-200">{book.addon02}</span>
         </div>
       )}
     </div>

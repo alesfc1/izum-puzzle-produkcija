@@ -3,5 +3,5 @@ export interface Book {
   title: string;
   author: string;
   coverUrl: string;
-  description?: string;
+  addon02?: string; //opis
 }
