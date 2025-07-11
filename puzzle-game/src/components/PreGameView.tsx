@@ -32,10 +32,10 @@ export default function PreGameView({ currentBook, selectedDifficulty, setSelect
 
                 {currentBook.id != '' ? (
                     <Card className="shadow-lg border-2 border-gray-700 bg-gray-800 w-full">
-                        <CardContent className="py-12 px-8 min-h-[300px] min-w-[450px]">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <CardContent className="py-12 px-8">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
                                 <div className="flex justify-center">
-                                    <div className="relative h-[380px] w-[250px] sm:h-[480px] sm:w-[316px] group overflow-hidden rounded-md" style={{ width: 250, height: 380 }}>
+                                    <div className="slika relative h-[400px] w-[270px] sm:h-[480px] sm:w-[316px] group overflow-hidden rounded-md">
                                         <Image
                                             src={currentBook.coverUrl}
                                             alt={currentBook.title}
@@ -57,15 +57,15 @@ export default function PreGameView({ currentBook, selectedDifficulty, setSelect
                                     </div>
                                 </div>
                                 <div className="space-y-4">
-                                    <h2 className="text-xl font-bold text-gray-100">{currentBook?.title || "Naslov ni na voljo"}</h2>
-                                    <p className="text-sm text-gray-300">{currentBook?.author || "Avtor ni na voljo"}</p>
+                                    <h2 className="text-xl font-bold text-gray-100 text-center lg:text-left">{currentBook?.title || "Naslov ni na voljo"}</h2>
+                                    <p className="text-sm text-gray-300 text-center lg:text-left">{currentBook?.author || "Avtor ni na voljo"}</p>
                                     <DifficultySelector
                                         difficulties={DIFFICULTIES}
                                         selected={selectedDifficulty}
                                         onChange={setSelectedDifficulty}
                                     />
-                                    <div className="pt-2">
-                                        <div className="flex flex-col sm:flex-row gap-3 w-full">
+                                    <div className="pt-5">
+                                        <div className="flex flex-col sm:flex-row gap-5 w-full">
                                             <Button
                                                 onClick={onStart}
                                                 disabled={!currentBook}
