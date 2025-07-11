@@ -18,7 +18,7 @@ interface Props {
 export default function GameCompleteView({ book, difficulty, handleGameComplete, onBackToSelection }: Props) {
   return (
     <div className="bg-gray-900  p-4 flex flex-col items-center">
-      <div className="w-full max-w-4xl">
+      <div className="w-full">
         <Card className="shadow-lg border-2 border-gray-700 bg-gray-800 w-full">
           <CardHeader className="pb-4">
             <CardTitle className="text-center text-2xl md:text-3xl text-gray-100 dark:text-gray-100">

@@ -25,7 +25,7 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
     const isMobile = useIsMobile();
 
     return (
-        <div className="w-full max-w-4xl my-auto">
+        <div className="w-full my-auto">
             <Card className="shadow-lg border-2 border-gray-700 bg-gray-800 w-full">
                 <CardHeader className="text-center pb-4">
                     <CardTitle className="text-center text-2xl md:text-3xl text-gray-100 flex items-center justify-center gap-2">
@@ -34,8 +34,8 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
                 </CardHeader>
                 <CardContent className="py-6 px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start mb-6">
-                        <div className="flex justify-center">
-                            <div className="relative w-full max-w-[220px] aspect-[2/3] group overflow-hidden rounded-md">
+                        <div className="space-y-6 w-full">
+                            <div className="relative flex justify-center max-w-[220px] aspect-[2/3] mx-auto group overflow-hidden rounded-md">
                                 <Image
                                     src={book.coverUrl}
                                     alt={book.title}
@@ -55,21 +55,24 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
                                     COBISS
                                 </div>
                             </div>
+
+                            <div className="bg-gray-700/50 rounded-lg p-4 border border-gray-600 text-gray-200 w-full">
+                                <BookInfo book={book} />
+                            </div>
                         </div>
-                        <div className="bg-gray-700/50 rounded-lg p-4 border border-gray-600 text-gray-200 w-full">
-                            <BookInfo book={book} />
+                        <div className="space-y-6">
+                            <ScoreDisplay
+                                scoreResult={gameResult!}
+                                completionTime={completionTime}
+                                rows={difficulty.rows}
+                                cols={difficulty.cols}
+                            />
                         </div>
                     </div>
-                    <ScoreDisplay
-                        scoreResult={gameResult!}
-                        completionTime={completionTime}
-                        rows={difficulty.rows}
-                        cols={difficulty.cols}
-                    />
                 </CardContent>
                 <CardFooter className="flex flex-wrap justify-center gap-4 pb-6 px-6">
-                    <div className="pt-2 mt-5">
-                        <div className="flex sm:flex-row gap-3 w-full">
+                    <div className="pt-2 mt-4">
+                        <div className="flex sm:flex-row gap-13 w-full">
                             <Button
                                 onClick={onBackToSelection}
                                 className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-5 rounded-xl shadow-md w-full sm:w-auto justify-center text-base flex-1 transition-transform duration-300 hover:scale-105"

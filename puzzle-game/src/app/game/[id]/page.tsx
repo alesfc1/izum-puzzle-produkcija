@@ -71,7 +71,6 @@ export default function GamePage() {
   }, [id, toast]);
 
   const onBackToSearch = () => {
-    setCurrentBook(undefined);
     window.location.href = "/search";
   }
 
