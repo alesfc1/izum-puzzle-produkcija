@@ -1,7 +1,8 @@
 import React from 'react';
 import BookCard from './BookCard';
-import {LoadingSpinner} from './ui/loading-spinner';
-import {Book} from '@/types/book';
+import { LoadingSpinner } from './ui/loading-spinner';
+import { Book } from '@/types/book';
+import "../styles/style.css"
 
 interface BookListProps {
   books: Book[];
@@ -13,9 +14,11 @@ interface BookListProps {
 const BookList = ({ books, onBookClick, isSearching, showInitialPrompt }: BookListProps) => {
   if (isSearching) {
     return (
-      <div className="text-center mb-4">
-        <LoadingSpinner />
-        <p className="text-gray-300 mt-2">Iščem knjige...</p>
+      <div className="loading flex items-center justify-center">
+        <div className="text-center">
+          <LoadingSpinner />
+          <p className="text-gray-300 mt-2">Iščem knjige...</p>
+        </div>
       </div>
     )
   }

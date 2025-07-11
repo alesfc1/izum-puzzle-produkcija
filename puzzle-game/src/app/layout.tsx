@@ -20,8 +20,10 @@ export default function RootLayout({
     <html lang="sl" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
         <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center w-full">
+          <div className="w-full max-w-4xl">
             <AppHeader />
-          {children}
+            {children}
+          </div>
           <Toaster />
         </div>
       </body>

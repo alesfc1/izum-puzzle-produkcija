@@ -47,6 +47,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "D:/Projects/izum-puzzle-produkcija",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -106,7 +107,8 @@
       <workItem from="1751951428959" duration="532000" />
       <workItem from="1751952024927" duration="7015000" />
       <workItem from="1752038743132" duration="3404000" />
-      <workItem from="1752125159143" duration="4224000" />
+      <workItem from="1752125159143" duration="4457000" />
+      <workItem from="1752212843795" duration="599000" />
     </task>
     <task id="LOCAL−00001" summary="api popravek, odstranjen firebase">
       <option name="closed" value="true" />

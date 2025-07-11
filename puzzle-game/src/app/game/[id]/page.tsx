@@ -28,7 +28,7 @@ export default function GamePage() {
         title: cobissData.primary || "Naslov ni na voljo",
         author: cobissData.secondary || "Avtor ni na voljo",
         coverUrl: cobissData.coverUrl || "Slika ni na voljo",
-        addon02: cobissData.addon02 || "Opis ni na voljo"
+        addon02: cobissData.addon02
       };
       setCurrentBook(book);
     } catch (error) {
@@ -82,6 +82,12 @@ export default function GamePage() {
     }
   }
 
+  const handleGameComplete = (result: ScoreResult, completionTime: number) => {
+    setGameResult(result);
+    setCompletionTime(completionTime);
+    setStage("complete");
+  }
+
   if (stage === "pregame") {
     return (
       currentBook?.coverUrl == "Slika ni na voljo" ? (
@@ -104,10 +110,7 @@ export default function GamePage() {
       <GameView
         book={currentBook!}
         difficulty={selectedDifficulty!}
-        handleGameComplete={(result) => {
-          setGameResult(result);
-          setStage("complete");
-        }}
+        handleGameComplete={handleGameComplete}
         onBackToSelection={() => setStage("pregame")}
       />
     );
