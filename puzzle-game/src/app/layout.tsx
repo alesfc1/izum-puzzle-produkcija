@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
+import "../styles/style.css";
 import { Toaster } from "@/components/ui/toast";
 import { AppHeader } from "@/components/AppHeader";
 
@@ -20,8 +21,10 @@ export default function RootLayout({
     <html lang="sl" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
         <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center w-full">
-          <div className="w-full max-w-4xl">
-            <AppHeader />
+          <div className="w-full max-w-6xl">
+            <div className="header">
+              <AppHeader />
+            </div>
             {children}
           </div>
           <Toaster />

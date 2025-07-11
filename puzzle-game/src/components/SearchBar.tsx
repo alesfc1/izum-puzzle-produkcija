@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
+import "../styles/style.css";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -20,7 +21,7 @@ const SearchBar = ({ onSearch, placeholder = "Poišči knjigo..." }: SearchBarPr
 
   return (
     <form onSubmit={handleSearch} className="relative w-full max-w-2xl mx-auto mb-8">
-      <div className="relative">
+      <div className="relative search-bar">
         <input
           type="text"
           value={query}

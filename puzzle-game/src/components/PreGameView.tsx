@@ -8,7 +8,6 @@ import { Book } from "@/types/book";
 import { Difficulty } from "@/types/difficulty";
 import difficulties from "../../db/difficulties.json";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
-//import css
 import "../styles/style.css";
 
 interface Props {
@@ -29,7 +28,7 @@ const DIFFICULTIES: Difficulty[] = difficulties.map((d) => ({
 export default function PreGameView({ currentBook, selectedDifficulty, setSelectedDifficulty, onStart, onBackToSearch, onOpenCobiss }: Props) {
     return (
         <div className="bg-gray-900 p-4 flex flex-col items-center justify-start">
-            <div className="w-full max-w-4xl mt-6">
+            <div className="w-full mt-6">
 
                 {currentBook.id != '' ? (
                     <Card className="shadow-lg border-2 border-gray-700 bg-gray-800 w-full">

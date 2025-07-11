@@ -21,7 +21,7 @@ export const InstructionsDialog: React.FC = () => {
         ) : (
           <Button 
             variant="ghost" 
-            className="text-gray-400 hover:text-white hover:bg-gray-700 p-5 h-16 w-16 flex items-center justify-center rounded-full"
+            className="text-gray-400 hover:text-white hover:bg-gray-700 p-5 h-16 w-16 flex items-center justify-center rounded-full mr-3"
             aria-label="Navodila za igro"
           >
             <HelpCircle className="h-6 w-6" style={{ minWidth: '24px', minHeight: '24px' }} />

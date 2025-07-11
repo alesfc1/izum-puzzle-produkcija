@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Card } from './ui/card';
+import { Card, CardHeader, CardTitle, CardFooter, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { ScoreDisplay } from './ScoreDisplay';
 import { ScoreResult } from '@/utils/scoringSystem';
@@ -25,10 +25,14 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
     const isMobile = useIsMobile();
 
     return (
-        <div className="bg-gray-900 p-4 flex flex-col items-center">
-            <div className="w-full max-w-4xl space-y-6">
-                <Card className="bg-gray-800 border-gray-700 shadow-md p-6">
-                    <div className="text-center text-white text-2xl mb-4">🎉 Čestitke! 🎉</div>
+        <div className="w-full max-w-4xl my-auto">
+            <Card className="shadow-lg border-2 border-gray-700 bg-gray-800 w-full">
+                <CardHeader className="text-center pb-4">
+                    <CardTitle className="text-center text-2xl md:text-3xl text-gray-100 flex items-center justify-center gap-2">
+                        <span className="text-2xl">🎉 Čestitke! 🎉</span>
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="py-6 px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start mb-6">
                         <div className="flex justify-center">
                             <div className="relative w-full max-w-[220px] aspect-[2/3] group overflow-hidden rounded-md">
@@ -53,7 +57,7 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
                             </div>
                         </div>
                         <div className="bg-gray-700/50 rounded-lg p-4 border border-gray-600 text-gray-200 w-full">
-                          <BookInfo book={book} />
+                            <BookInfo book={book} />
                         </div>
                     </div>
                     <ScoreDisplay
@@ -62,6 +66,8 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
                         rows={difficulty.rows}
                         cols={difficulty.cols}
                     />
+                </CardContent>
+                <CardFooter className="flex flex-wrap justify-center gap-4 pb-6 px-6">
                     <div className="pt-2 mt-5">
                         <div className="flex sm:flex-row gap-3 w-full">
                             <Button
@@ -81,8 +87,8 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
                             </Button>
                         </div>
                     </div>
-                </Card>
-            </div>
+                </CardFooter>
+            </Card>
         </div>
     );
 }
