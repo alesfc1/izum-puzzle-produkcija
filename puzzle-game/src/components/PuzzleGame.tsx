@@ -227,6 +227,7 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
 
   // zacetek premik z misko
   const handleDragStart = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>, id: number) => {
+    e.preventDefault();
     if (isRotating) return;
 
     const piece = pieces.find(p => p.id === id);
@@ -260,7 +261,7 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
   };
 
   // premik z misko
-  const handleDragMove = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+  const handleDragMove = useCallback((e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
     if (draggingPiece === null) return; // preverimo, ali sploh premikamo kateri koli kos
 
     if (animationFrameRef.current !== null) {
@@ -303,7 +304,7 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
       })
       );
     });
-  };
+  }, [draggingPiece]);
 
   // konec premika miske in preverjanje ce je pozicija ok
   const handleDragEnd = () => {
@@ -332,6 +333,30 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
       setDraggingPiece(null);
     }
   };
+
+  useEffect(() => {
+    if (draggingPiece !== null) {
+      const handleMove = (e: MouseEvent | TouchEvent) => {
+        handleDragMove(e as any);
+      };
+      const handleUp = (e: MouseEvent | TouchEvent) => {
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+        handleDragEnd();
+      };
+  
+      window.addEventListener('mousemove', handleMove);
+      window.addEventListener('touchmove', handleMove);
+      window.addEventListener('mouseup', handleUp);
+      window.addEventListener('touchend', handleUp);
+  
+      return () => {
+        window.removeEventListener('mousemove', handleMove);
+        window.removeEventListener('touchmove', handleMove);
+        window.removeEventListener('mouseup', handleUp);
+        window.removeEventListener('touchend', handleUp);
+      };
+    }
+  }, [draggingPiece, handleDragMove, handleDragEnd]);
 
   // rotacija puzzla
   const rotatePiece = (id: number) => {
@@ -365,6 +390,8 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
         return piece;
       }));
     }, 300);
+
+    setDraggingPiece(null);
   };
 
   // dvojni-tap za rotacijo
@@ -453,11 +480,6 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
             showSolution ? 'bg-white/30' : 'bg-gray-800/50',
             !imageLoaded && 'invisible'
           )}
-          onMouseMove={draggingPiece !== null ? handleDragMove : undefined}
-          onMouseUp={handleDragEnd}
-          onMouseLeave={handleDragEnd}
-          onTouchMove={draggingPiece !== null ? handleDragMove : undefined}
-          onTouchEnd={handleDragEnd}
         >
           {/* mreza */}
           <div
