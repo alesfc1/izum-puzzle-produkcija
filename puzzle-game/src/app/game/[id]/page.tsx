@@ -10,6 +10,9 @@ import { useParams } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { ScoreResult } from "@/utils/scoringSystem";
 import difficulties from "../../../../db/difficulties.json";
+import ErrorPage from "@/components/ErrorPage";
+import "@/styles/style.css";	
+import { notFound } from "next/navigation";
 
 export default function GamePage() {
   const [stage, setStage] = useState<"pregame" | "game" | "complete">("pregame");
@@ -17,6 +20,8 @@ export default function GamePage() {
   const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty>(difficulties[0]);
   const [gameResult, setGameResult] = useState<ScoreResult>();
   const [completionTime, setCompletionTime] = useState(0);
+  const [responseStatus, setResponseStatus] = useState<number>(404);
+  const [responseMessage, setResponseMessage] = useState<string>("Iskana knjiga nima naslovnice");
   const { toast } = useToast();
   const { id } = useParams() as { id: string };
 
@@ -52,8 +57,13 @@ export default function GamePage() {
   const bookCobiss = async (id: string): Promise<CobissBookResponse> => {
     const response = await fetch(`/api/${id}`);
     const data = await response.json();
+    if(data.error){
+      setResponseStatus(404);
+      setResponseMessage(data.error.text);
+    } else {
+      setResponseStatus(response.status);
+    }
     console.log("Prejeti podatki iz COBISS:", data);
-    console.log("ID: ", data.id, "Naslov: ", data.primary, "Avtor: ", data.secondary, "Slika: ", data.coverUrl, "Opis: ", data.addon02);
     return {
       ...data
     }
@@ -90,7 +100,7 @@ export default function GamePage() {
   if (stage === "pregame") {
     return (
       currentBook?.coverUrl == "Slika ni na voljo" ? (
-        <div className="loading flex items-center justify-center"><p>Ne najdem slike na knjigi s COBISS id: {id}</p></div>
+        <ErrorPage status={responseStatus} message={responseMessage} />
       ) : (
         <PreGameView
           currentBook={currentBook || { id: "", title: "", author: "", coverUrl: "" }}

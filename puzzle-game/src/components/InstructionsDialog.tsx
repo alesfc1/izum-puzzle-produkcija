@@ -106,7 +106,7 @@ export const InstructionsDialog: React.FC = () => {
               </ul>
               
               <div className="mt-4">
-                <p className="font-semibold mb-2">Dosežite lahko naslednje medalje:</p>
+                <p className="font-semibold mb-2">Dosežete lahko naslednje medalje:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3 text-center">
                     <div className="text-2xl">🥇</div>
