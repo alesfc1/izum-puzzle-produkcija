@@ -66,7 +66,6 @@ export default function GamePage() {
     else {
       setResponseStatus(response.status);
     }
-    console.log("Prejeti podatki iz COBISS:", data);
     return {
       ...data
     }

@@ -22,7 +22,6 @@ export default function SearchPage() {
     setIsSearching(true);
     try {
       const cobissData = await searchCobiss(query);
-      console.log("Prejeti podatki iz COBISS:", cobissData);
       const items = cobissData?.value?.searchItems || [];
       const convertedBooks: Book[] = items.map((item, index) => ({
         id: (item.id || index).toString(),
@@ -57,7 +56,6 @@ export default function SearchPage() {
   const searchCobiss = async (query: string): Promise<CobissResponse> => {
     const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
     const data = await response.json();
-    console.log("Data: ", data);
     return {
       ...data,
       value: {

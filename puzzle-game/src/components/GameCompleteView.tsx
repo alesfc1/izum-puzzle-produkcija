@@ -25,7 +25,7 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
     const isMobile = useIsMobile();
 
     return (
-        <div className="w-full my-auto">
+        <div className="w-full">
             <Card className="shadow-lg border-2 border-gray-700 bg-gray-800 w-full">
                 <CardHeader className="text-center pb-4">
                     <CardTitle className="text-center text-2xl md:text-3xl text-gray-100 flex items-center justify-center gap-2">

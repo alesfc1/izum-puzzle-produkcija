@@ -7,7 +7,6 @@ interface BookInfoProps {
 
 export const BookInfo: React.FC<BookInfoProps> = ({ book }) => {
   if (!book) return null;
-  console.log("BookInfo:", book);
 
   return (
     <div className="flex flex-col space-y-4">
