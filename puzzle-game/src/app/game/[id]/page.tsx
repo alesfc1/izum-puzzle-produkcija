@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import PreGameView from "../../../components/PreGameView";
 import GameView from "../../../components/GameView";
 import GameCompleteView from "../../../components/GameCompleteView";
@@ -12,7 +12,6 @@ import { ScoreResult } from "@/utils/scoringSystem";
 import difficulties from "../../../../db/difficulties.json";
 import ErrorPage from "@/components/ErrorPage";
 import "@/styles/style.css";	
-import { notFound } from "next/navigation";
 
 export default function GamePage() {
   const [stage, setStage] = useState<"pregame" | "game" | "complete">("pregame");
@@ -21,7 +20,7 @@ export default function GamePage() {
   const [gameResult, setGameResult] = useState<ScoreResult>();
   const [completionTime, setCompletionTime] = useState(0);
   const [responseStatus, setResponseStatus] = useState<number>(404);
-  const [responseMessage, setResponseMessage] = useState<string>("Iskana knjiga nima naslovnice");
+  const [responseMessage, setResponseMessage] = useState<string>("");
   const { toast } = useToast();
   const { id } = useParams() as { id: string };
 
@@ -60,7 +59,11 @@ export default function GamePage() {
     if(data.error){
       setResponseStatus(404);
       setResponseMessage(data.error.text);
-    } else {
+    } else if(data.coverUrl == null){
+      setResponseStatus(404);
+      setResponseMessage("Iskana knjiga nima naslovnice");
+    }
+    else {
       setResponseStatus(response.status);
     }
     console.log("Prejeti podatki iz COBISS:", data);
