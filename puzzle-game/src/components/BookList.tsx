@@ -25,15 +25,13 @@ const BookList = ({ books, onBookClick, isSearching, showInitialPrompt }: BookLi
   else if (showInitialPrompt) {
     return (
       <div className="text-center py-12">
-        <div className="text-gray-400 text-lg mb-2">Vnesite ime knjige ali avtorja</div>
-        <div className="text-gray-500 text-sm">Začnite z iskanjem</div>
-        <div>
-          <img
-            src="/jigsaw-puzzle-295434.svg"
-            alt="Search Icon"
-            className="mt-5 mx-auto w-100 h-100"
-          />
-        </div>
+          <div className="text-gray-400 text-lg mb-2">Vnesite ime knjige ali avtorja</div>
+          <div className="text-gray-500 text-sm">Začnite z iskanjem</div>
+        <img
+          src="/jigsaw-puzzle-774055.svg"
+          alt="Search Icon"
+          className="mt-12 mx-auto w-70 h-70 sm:w-80 sm:h-80"
+        />
       </div>
     );
   }

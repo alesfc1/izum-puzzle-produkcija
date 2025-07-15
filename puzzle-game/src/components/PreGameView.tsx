@@ -27,7 +27,7 @@ const DIFFICULTIES: Difficulty[] = difficulties.map((d) => ({
 
 export default function PreGameView({ currentBook, selectedDifficulty, setSelectedDifficulty, onStart, onBackToSearch, onOpenCobiss }: Props) {
     return (
-        <div className="bg-gray-900 p-4 flex flex-col items-center justify-start">
+        <div className="bg-gray-900 sm:p-4 flex flex-col items-center justify-start">
             <div className="w-full mt-6">
 
                 {currentBook.id != '' ? (
@@ -35,7 +35,7 @@ export default function PreGameView({ currentBook, selectedDifficulty, setSelect
                         <CardContent className="py-12 px-8">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
                                 <div className="flex justify-center">
-                                    <div className="slika relative h-[400px] w-[270px] sm:h-[480px] sm:w-[316px] group overflow-hidden rounded-md">
+                                    <div className="slika relative h-[350px] w-[220px] sm:h-[480px] sm:w-[316px] group overflow-hidden rounded-md">
                                         <Image
                                             src={currentBook.coverUrl}
                                             alt={currentBook.title}

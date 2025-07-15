@@ -33,7 +33,7 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="py-6 px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start mb-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                         <div className="space-y-6 w-full">
                             <div className="relative flex justify-center max-w-[220px] aspect-[2/3] mx-auto group overflow-hidden rounded-md">
                                 <Image
@@ -69,28 +69,26 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
                             />
                         </div>
                     </div>
-                </CardContent>
-                <CardFooter className="flex flex-wrap justify-center gap-4 pb-6 px-6">
-                    <div className="pt-2 mt-4">
-                        <div className="flex sm:flex-row gap-13 w-full">
+                    <div className="pt-5 sm:pt-10 pb-6 px-6">
+                        <div className="flex sm:flex-row flex-col md:gap-13 gap-5 w-full">
                             <Button
                                 onClick={onBackToSelection}
-                                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-5 rounded-xl shadow-md w-full sm:w-auto justify-center text-base flex-1 transition-transform duration-300 hover:scale-105"
-                                size={isMobile ? "lg" : "default"}
+                                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-5 rounded-xl shadow-md justify-center text-base flex-1 transition-transform duration-300 hover:scale-105"
+                                size="lg"
                             >
                                 Igraj ponovno
                             </Button>
                             <Button
                                 variant="outline"
                                 onClick={onBackToSearch}
-                                className="bg-white hover:bg-gray-300 text-gray-800 border-gray-300 hover:border-gray-400 text-base px-6 py-5 font-medium rounded-xl flex-1 transition-transform duration-300 hover:scale-105"
+                                className="bg-white hover:bg-gray-300 text-gray-800 border-gray-300 hover:border-gray-400 text-base py-5 font-medium rounded-xl flex-1 transition-transform duration-300 hover:scale-105"
                                 size="lg"
                             >
                                 Nazaj
                             </Button>
                         </div>
                     </div>
-                </CardFooter>
+                </CardContent>
             </Card>
         </div>
     );

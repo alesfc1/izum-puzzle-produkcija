@@ -182,10 +182,7 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
       setContainerDimensions({ width, height });
       setContainerSize({ width, height });
     };
-
     updateSize();
-    window.addEventListener('resize', updateSize);
-    return () => window.removeEventListener('resize', updateSize);
   }, [imageAspectRatio]);
 
   // inicializacija igre, ko so nastavljene dimenzije kontejnerja in je slika nalozena
@@ -220,7 +217,7 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
   }, [containerSize, cols, rows, imageAspectRatio, containerRef]);
 
   useEffect(() => {
-    if (containerSize.width > 0 && imageLoaded) {
+    if (containerSize.width > 0 && imageLoaded && pieces.length === 0) {
       initGame();
     }
   }, [containerSize, imageLoaded, initGame]);

@@ -10,13 +10,13 @@
   }
 }
 
-@media (min-height: 800px){
+@media (min-height: 850px){
   .search-bar{
     margin-top: 50px;
   }
 }
 
-@media (min-width: 800px) and (min-height: 800px) {
+@media (min-width: 800px) and (min-height: 850px) {
   .header {
     margin-top: 30px;
   }
