@@ -90,9 +90,7 @@ export default function SearchPage() {
   // Debounced COBISS search
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (searchTerm.trim().length > 2) {
         handleCobissSearch(searchTerm);
-      }
     }, 500); // 500ms delay
 
     return () => clearTimeout(timeoutId);
@@ -107,13 +105,13 @@ export default function SearchPage() {
   };
   return (
     <div className="bg-gray-900 p-4 flex flex-col items-center justify-start">
-        <SearchBar onSearch={handleSearch} />
-        <BookList
-          books={cobissBooks}
-          onBookClick={handleBookSelect}
-          isSearching={isSearching}
-          showInitialPrompt={!hasSearched}
-        />
+      <SearchBar onSearch={handleSearch} />
+      <BookList
+        books={cobissBooks}
+        onBookClick={handleBookSelect}
+        isSearching={isSearching}
+        showInitialPrompt={!hasSearched}
+      />
     </div>
   );
 }
