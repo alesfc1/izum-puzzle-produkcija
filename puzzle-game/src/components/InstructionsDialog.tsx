@@ -12,16 +12,16 @@ export const InstructionsDialog: React.FC = () => {
     <Dialog>
       <DialogTrigger asChild>
         {isMobile ? (
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             className="text-gray-400 hover:text-white hover:bg-gray-700 p-5 h-16 w-16 flex items-center justify-center rounded-full"
             aria-label="Navodila za igro"
           >
             <HelpCircle className="h-6 w-6" style={{ minWidth: '24px', minHeight: '24px' }} />
           </Button>
         ) : (
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             className="text-gray-400 hover:text-white hover:bg-gray-700 p-5 h-16 w-16 flex items-center justify-center rounded-full"
             aria-label="Navodila za igro"
           >
@@ -29,7 +29,7 @@ export const InstructionsDialog: React.FC = () => {
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent 
+      <DialogContent
         className="max-w-2xl max-h-[90vh] overflow-y-auto bg-gray-800 border-2 border-gray-700 shadow-xl text-gray-100
         scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-700 hover:scrollbar-thumb-gray-500
         [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600
@@ -41,7 +41,7 @@ export const InstructionsDialog: React.FC = () => {
             Navodila za igro
           </DialogTitle>
         </DialogHeader>
-        
+
         <div className="space-y-6 px-1">
           {/* Osnove igre */}
           <div className="bg-gray-700/50 rounded-xl p-6 border border-gray-600">
@@ -49,7 +49,7 @@ export const InstructionsDialog: React.FC = () => {
               Cilj igre
             </h3>
             <p className="text-gray-200 leading-relaxed">
-              Sestavite puzzle iz delov naslovnice knjige. Ko uspešno sestavite sestavljanko, 
+              Sestavite puzzle iz delov naslovnice knjige. Ko uspešno sestavite sestavljanko,
               boste izvedeli več o knjigi in jo poiskali v COBISS sistemu.
             </p>
           </div>
@@ -69,7 +69,7 @@ export const InstructionsDialog: React.FC = () => {
                   <p>Premaknite puzzle z miško ali dotikom na želeno mesto.</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 mt-1 w-8 h-8 rounded-full bg-purple-600/30 flex items-center justify-center">
                   <span className="text-purple-300">🦜</span>
@@ -79,7 +79,7 @@ export const InstructionsDialog: React.FC = () => {
                   <p>Kliknite dvakrat na delček, da ga obrnete za 90°.</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 mt-1 w-8 h-8 rounded-full bg-green-600/30 flex items-center justify-center">
                   <span className="text-green-300">🦒</span>
@@ -105,7 +105,7 @@ export const InstructionsDialog: React.FC = () => {
                 <li><span className="font-semibold">Kazen za čas:</span> Po prekoračitvi časa se točke eksponentno zmanjšujejo</li>
                 <li><span className="font-semibold">Kazen za pomoč:</span> Uporaba rešitve zmanjša najvišje možno število točk na 60%</li>
               </ul>
-              
+
               <div className="mt-4">
                 <p className="font-semibold mb-2">Dosežete lahko naslednje medalje:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -126,7 +126,7 @@ export const InstructionsDialog: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-4 bg-gray-600/30 p-3 rounded-lg border border-gray-500/30">
                 <p className="text-sm text-gray-300">
                   <span className="font-semibold text-amber-400">Pomembno:</span> Časovna omejitev je odvisna od velikosti sestavljanke.
@@ -217,7 +217,7 @@ export const InstructionsDialog: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-6 pt-4 border-t border-gray-700 text-center">
           <p className="text-gray-400 text-sm">
             Uživajte v sestavljanju in spoznavanju slovenske literature!

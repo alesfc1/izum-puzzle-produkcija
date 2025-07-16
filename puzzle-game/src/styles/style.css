@@ -1,8 +1,8 @@
-@media (max-height: 700px){
-    .loading {
-      min-height: 200px;
-    }
+@media (max-height: 700px) {
+  .loading {
+    min-height: 200px;
   }
+}
 
 @media (min-height: 701px) {
   .loading {
@@ -10,8 +10,8 @@
   }
 }
 
-@media (min-height: 850px){
-  .search-bar{
+@media (min-height: 850px) {
+  .search-bar {
     margin-top: 50px;
   }
 }
@@ -23,11 +23,12 @@
 }
 
 @media (max-width: 540px) {
-  .book-list{
+  .book-list {
     display: flex;
     flex-direction: column;
     gap: 2rem;
   }
+
   .book-card {
     width: 80%;
     margin: 0 auto;
@@ -35,11 +36,12 @@
 }
 
 @media (max-width: 410px) {
-  .slika{
+  .slika {
     height: 350px;
     width: 90%;
   }
-  html{
+
+  html {
     font-size: 14px;
   }
 }

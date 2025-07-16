@@ -90,16 +90,16 @@ export const reducer = (state: State, action: Action): State => {
         id: action.toast.id || genId(),
         open: true // zacetek z open: true za prikaz
       }
-      
+
       // dodaj v vrsto za odstranitev za samodejno zapiranje
       addToRemoveQueue(newToast.id)
-      
+
       // posodobi stanje z novim obvestilom
       return {
         ...state,
         toasts: [newToast, ...state.toasts].slice(0, TOAST_LIMIT),
       }
-    
+
     case "UPDATE_TOAST":
       return {
         ...state,
@@ -107,14 +107,14 @@ export const reducer = (state: State, action: Action): State => {
           t.id === action.toast.id ? { ...t, ...action.toast } : t
         ),
       }
-    
+
     case "DISMISS_TOAST":
       // pocisti obstoječi casovni zamik za to obvestilo
       if (toastTimeouts.has(action.toastId)) {
         clearTimeout(toastTimeouts.get(action.toastId))
         toastTimeouts.delete(action.toastId)
       }
-      
+
       // nastavi open na false za animacijo
       const updatedState = {
         ...state,
@@ -127,7 +127,7 @@ export const reducer = (state: State, action: Action): State => {
       setTimeout(() => {
         dispatch({ type: "REMOVE_TOAST", toastId: action.toastId })
       }, 300) // ujemanje trajanja animacije
-      
+
       return updatedState
 
     case "REMOVE_TOAST":
@@ -136,12 +136,12 @@ export const reducer = (state: State, action: Action): State => {
         clearTimeout(toastTimeouts.get(action.toastId))
         toastTimeouts.delete(action.toastId)
       }
-      
+
       return {
         ...state,
         toasts: state.toasts.filter((t) => t.id !== action.toastId),
       }
-      
+
     default:
       return state
   }
@@ -155,7 +155,7 @@ function toast({ ...props }: Toast) {
       type: "UPDATE_TOAST",
       toast: { ...props, id },
     })
-    
+
   const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id })
 
   dispatch({

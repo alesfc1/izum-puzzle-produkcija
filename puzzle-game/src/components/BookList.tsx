@@ -25,8 +25,8 @@ const BookList = ({ books, onBookClick, isSearching, showInitialPrompt }: BookLi
   else if (showInitialPrompt) {
     return (
       <div className="text-center md:py-12 py-5">
-          <div className="text-gray-400 text-lg mb-2">Vnesite ime knjige ali avtorja</div>
-          <div className="text-gray-500 text-sm">Začnite z iskanjem</div>
+        <div className="text-gray-400 text-lg mb-2">Vnesite ime knjige ali avtorja</div>
+        <div className="text-gray-500 text-sm">Začnite z iskanjem</div>
         <img
           src="/jigsaw-puzzle-774055.svg"
           alt="Search Icon"

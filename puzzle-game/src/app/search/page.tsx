@@ -90,7 +90,7 @@ export default function SearchPage() {
   // Debounced COBISS search
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if(searchTerm .trim() !== '') {
+      if (searchTerm.trim() !== '') {
         handleCobissSearch(searchTerm);
       }
     }, 500); // 500ms delay

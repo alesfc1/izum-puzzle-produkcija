@@ -341,12 +341,12 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
         if (typeof e.preventDefault === 'function') e.preventDefault();
         handleDragEnd();
       };
-  
+
       window.addEventListener('mousemove', handleMove);
       window.addEventListener('touchmove', handleMove);
       window.addEventListener('mouseup', handleUp);
       window.addEventListener('touchend', handleUp);
-  
+
       return () => {
         window.removeEventListener('mousemove', handleMove);
         window.removeEventListener('touchmove', handleMove);

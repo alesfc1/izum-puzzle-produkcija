@@ -26,21 +26,21 @@ export const ScoreDisplay: React.FC<ScoreDisplayProps> = ({
   useEffect(() => {
     const targetPoints = GameStorage.getTotalPoints();
     const startPoints = targetPoints - scoreResult.points;
-    
+
     if (startPoints >= 0) {
       setDisplayedPoints(startPoints);
-      
-      const duration = 1500; 
+
+      const duration = 1500;
       const startTime = Date.now();
       const endTime = startTime + duration;
-      
+
       const animate = () => {
         const now = Date.now();
         const progress = Math.min((now - startTime) / duration, 1);
-        
+
         const currentPoints = Math.floor(startPoints + (scoreResult.points * progress));
         setDisplayedPoints(currentPoints);
-        
+
         if (now < endTime) {
           requestAnimationFrame(animate);
         } else {
@@ -48,7 +48,7 @@ export const ScoreDisplay: React.FC<ScoreDisplayProps> = ({
           setIsAnimating(false);
         }
       };
-      
+
       const animationFrame = requestAnimationFrame(animate);
       return () => cancelAnimationFrame(animationFrame);
     } else {

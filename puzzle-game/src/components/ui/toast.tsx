@@ -20,10 +20,9 @@ export function Toaster() {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`bg-gray-800 text-white p-4 rounded-lg shadow-lg flex items-center justify-between transition-opacity duration-300 ${
-            toast.open ? 'toast-enter' : 'toast-exit'
-          }`}
-          style={{ 
+          className={`bg-gray-800 text-white p-4 rounded-lg shadow-lg flex items-center justify-between transition-opacity duration-300 ${toast.open ? 'toast-enter' : 'toast-exit'
+            }`}
+          style={{
             display: toast.open ? "flex" : "none",
             opacity: toast.open ? 1 : 0,
             transition: "opacity 300ms ease-in-out"

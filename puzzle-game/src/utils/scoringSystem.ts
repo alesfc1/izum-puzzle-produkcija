@@ -51,27 +51,27 @@ export const calculateScore = (
   const originalMaxPoints = 100 * Math.pow(2, difficulty - 1);
   const maxPoints = hasUsedSolution ? Math.floor(originalMaxPoints * 0.6) : originalMaxPoints;
   const timeLimit = calculateTimeLimit(rows, cols);
-  
+
   let points: number;
-  
+
   if (completionTime <= timeLimit) {
     points = maxPoints;
   } else {
     const timePenalty = completionTime - timeLimit;
     points = maxPoints * Math.exp(-k * timePenalty);
   }
-  
+
   points = Math.floor(points);
-  
+
   const percentage = (points / maxPoints) * 100;
-  
+
   // rang
   let rank: 'zlata medalja' | 'srebrna medalja' | 'bronasta medalja' | 'Več sreče prihodnjič!';
   if (percentage >= 100) rank = 'zlata medalja';
   else if (percentage >= 60) rank = 'srebrna medalja';
   else if (percentage >= 30) rank = 'bronasta medalja';
   else rank = 'Več sreče prihodnjič!';
-  
+
   return {
     points,
     maxPoints,
@@ -88,7 +88,7 @@ export const getScoringConfig = (rows: number, cols: number, hasUsedSolution: bo
   const difficulty = calculateDifficulty(rows, cols);
   const maxPoints = calculateMaxPoints(difficulty, hasUsedSolution);
   const timeLimit = calculateTimeLimit(rows, cols);
-  
+
   return {
     maxPoints,
     timeLimit,

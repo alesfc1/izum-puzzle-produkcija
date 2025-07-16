@@ -23,7 +23,7 @@ export const Timer: React.FC<TimerProps> = ({
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    
+
     if (isRunning) {
       interval = setInterval(() => {
         setTime(prevTime => {
@@ -33,11 +33,11 @@ export const Timer: React.FC<TimerProps> = ({
         });
       }, 1000);
     }
-    
+
     return () => {
       if (interval) clearInterval(interval);
     };
-}, [isRunning, handleTimeUpdate]);
+  }, [isRunning, handleTimeUpdate]);
 
   useEffect(() => {
     if (!isRunning) {
@@ -57,9 +57,9 @@ export const Timer: React.FC<TimerProps> = ({
   return (
     <div className={cn(
       "text-center p-2 sm:p-3 rounded-lg font-mono font-semibold transition-all duration-300 flex flex-col justify-center h-full",
-      isOverLimit ? "bg-red-100 text-red-700 animate-pulse" : 
-      warningZone ? "bg-yellow-100 text-yellow-700" : 
-      "bg-blue-100 text-blue-700",
+      isOverLimit ? "bg-red-100 text-red-700 animate-pulse" :
+        warningZone ? "bg-yellow-100 text-yellow-700" :
+          "bg-blue-100 text-blue-700",
       className
     )}>
       <div className="text-xs sm:text-sm text-gray-600">Čas</div>

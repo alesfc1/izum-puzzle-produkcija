@@ -22,14 +22,14 @@ export const StatisticsDialog: React.FC = () => {
     try {
       setIsLoading(true);
       const statistics = GameStorage.getAllStatistics();
-      
+
       setStats({
         totalPoints: statistics.totalPoints,
         totalGames: statistics.totalGames,
         averageScore: statistics.averageScore,
         lastPlayed: statistics.lastPlayed
       });
-      
+
       setPlayedDifficulties(statistics.difficultyStats);
     } catch (error) {
       console.error('Napaka pri nalaganju statistik:', error);
@@ -41,11 +41,11 @@ export const StatisticsDialog: React.FC = () => {
   // Poslušaj spremembe v localStorage
   useEffect(() => {
     if (!isDialogOpen) return;
-    
+
     const handleStorageChange = () => {
       loadStats();
     };
-    
+
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, [isDialogOpen]);
@@ -69,27 +69,27 @@ export const StatisticsDialog: React.FC = () => {
     <Dialog open={isDialogOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild onClick={() => setIsDialogOpen(true)}>
         {isMobile ? (
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             className="text-gray-400 hover:text-white hover:bg-gray-700 p-5 h-16 w-16 flex items-center justify-center rounded-full"
             aria-label="Prikaži statistiko"
           >
             <BarChart3 className="h-6 w-6" style={{ minWidth: '24px', minHeight: '24px' }} />
           </Button>
         ) : (
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             className="text-gray-400 hover:text-white hover:bg-gray-700 p-5 h-16 w-16 flex items-center justify-center rounded-full"
             aria-label="Prikaži statistiko"
           >
-            <BarChart3 
-              className="h-6 w-6" 
-              style={{ minWidth: '24px', minHeight: '24px' }} 
+            <BarChart3
+              className="h-6 w-6"
+              style={{ minWidth: '24px', minHeight: '24px' }}
             />
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent 
+      <DialogContent
         className="max-w-2xl max-h-[90vh] overflow-y-auto bg-gray-800 border-2 border-gray-700 shadow-xl text-gray-100
         scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-700 hover:scrollbar-thumb-gray-500
         [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600
@@ -134,7 +134,7 @@ export const StatisticsDialog: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Statistika po težavnosti */}
             {playedDifficulties.length > 0 && (
               <div className="bg-gray-700/50 rounded-xl p-6 border border-amber-500/30">
@@ -143,7 +143,7 @@ export const StatisticsDialog: React.FC = () => {
                 </h3>
                 <div className="space-y-4">
                   {playedDifficulties.map((diff) => (
-                    <div 
+                    <div
                       key={diff.level}
                       className="bg-gray-800/50 p-4 rounded-lg border border-amber-500/30"
                     >

@@ -34,7 +34,7 @@ export const DifficultySelector: React.FC<DifficultySelectorProps> = ({
           {difficulties.map((difficulty, index) => {
             const isSelected = selected.label === difficulty.label;
             const bgGradient = difficultyColors[index] || 'from-gray-200 to-gray-300';
-  
+
             return (
               <button
                 key={difficulty.label}
@@ -42,7 +42,7 @@ export const DifficultySelector: React.FC<DifficultySelectorProps> = ({
                   "px-4 py-4 text-base font-medium transition-all duration-150 h-14 flex-1 min-w-0",
                   "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-400",
                   "rounded-xl whitespace-nowrap bg-[#EEEEEF]",
-                  isSelected 
+                  isSelected
                     ? `text-white bg-gradient-to-r ${bgGradient} shadow-md`
                     : "text-gray-600 hover:bg-gray-200"
                 )}
