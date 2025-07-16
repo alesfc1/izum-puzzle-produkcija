@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { BarChart3 } from 'lucide-react';
 import { GameStorage, type DifficultyStats } from '@/utils/gameStorage';
 import { useIsMobile } from '@/hooks/use-mobile';
+import "../styles/style.css";
 
 export const StatisticsDialog: React.FC = () => {
   const isMobile = useIsMobile();

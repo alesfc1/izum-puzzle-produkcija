@@ -10,6 +10,7 @@ import { Difficulty } from '@/types/difficulty';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Book } from '@/types/book';
 import { BookInfo } from './BookInfo';
+import "../styles/style.css";
 
 interface Props {
     gameResult: ScoreResult;

@@ -3,6 +3,7 @@
 import { Card, CardHeader, CardTitle } from "./ui/card";
 import { InstructionsDialog } from "./InstructionsDialog";
 import { StatisticsDialog } from "./StatisticsDialog";
+import "../styles/style.css";
 
 export function AppHeader() {
 

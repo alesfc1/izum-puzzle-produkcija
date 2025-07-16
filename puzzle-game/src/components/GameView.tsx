@@ -7,6 +7,7 @@ import { Book } from '../types/book';
 import { Difficulty } from '@/types/difficulty';
 import { ScoreResult } from '@/utils/scoringSystem';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from './ui/card';
+import "../styles/style.css";
 
 interface Props {
   book: Book;

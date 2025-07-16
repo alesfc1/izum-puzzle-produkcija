@@ -34,9 +34,12 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 410px) {
   .slika{
     height: 350px;
     width: 90%;
+  }
+  html{
+    font-size: 14px;
   }
 }

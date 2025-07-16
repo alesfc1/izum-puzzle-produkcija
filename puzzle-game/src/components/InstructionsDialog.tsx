@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from '@/components/ui/button';
 import { HelpCircle } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import "../styles/style.css";
 
 export const InstructionsDialog: React.FC = () => {
   const isMobile = useIsMobile();
