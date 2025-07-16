@@ -34,6 +34,14 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
                 </CardHeader>
                 <CardContent className="py-6 px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                        <div className="space-y-6">
+                            <ScoreDisplay
+                                scoreResult={gameResult!}
+                                completionTime={completionTime}
+                                rows={difficulty.rows}
+                                cols={difficulty.cols}
+                            />
+                        </div>
                         <div className="space-y-6 w-full">
                             <div className="relative flex justify-center max-w-[220px] aspect-[2/3] mx-auto group overflow-hidden rounded-md">
                                 <Image
@@ -59,14 +67,6 @@ export default function GameCompleteView({ gameResult, onBackToSelection, onBack
                             <div className="bg-gray-700/50 rounded-lg p-4 border border-gray-600 text-gray-200 w-full">
                                 <BookInfo book={book} />
                             </div>
-                        </div>
-                        <div className="space-y-6">
-                            <ScoreDisplay
-                                scoreResult={gameResult!}
-                                completionTime={completionTime}
-                                rows={difficulty.rows}
-                                cols={difficulty.cols}
-                            />
                         </div>
                     </div>
                     <div className="pt-5 sm:pt-10 pb-6 px-6">

@@ -1,11 +1,14 @@
 import React from 'react';
 import { Book } from '@/types/book';
+import { useState } from 'react';
 
 interface BookInfoProps {
   book: Book | null;
 }
 
 export const BookInfo: React.FC<BookInfoProps> = ({ book }) => {
+  const [showDescription, setShowDescription] = useState(false);
+
   if (!book) return null;
 
   return (
@@ -22,7 +25,15 @@ export const BookInfo: React.FC<BookInfoProps> = ({ book }) => {
       {/* Opis */}
       {book.addon02 && (
         <div className="pt-2">
-          <span className="text-gray-200">{book.addon02}</span>
+          <button
+            className="text-gray-300 underline cursor-pointer"
+            onClick={() => setShowDescription(v => !v)}
+          >
+            {showDescription ? 'Skrij opis' : 'Prikaži opis'}
+          </button>
+          {showDescription && (
+            <div className="mt-2 text-gray-200">{book.addon02}</div>
+          )}
         </div>
       )}
     </div>
