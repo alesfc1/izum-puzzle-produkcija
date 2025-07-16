@@ -266,6 +266,7 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({
     }
 
     animationFrameRef.current = requestAnimationFrame(() => {
+      if (!containerRef.current) return;
       const containerRect = containerRef.current!.getBoundingClientRect();
       let clientX: number, clientY: number;
 
