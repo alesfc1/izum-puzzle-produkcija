@@ -24,13 +24,13 @@ const BookList = ({ books, onBookClick, isSearching, showInitialPrompt }: BookLi
   }
   else if (showInitialPrompt) {
     return (
-      <div className="text-center py-12">
+      <div className="text-center md:py-12 py-5">
           <div className="text-gray-400 text-lg mb-2">Vnesite ime knjige ali avtorja</div>
           <div className="text-gray-500 text-sm">Začnite z iskanjem</div>
         <img
           src="/jigsaw-puzzle-774055.svg"
           alt="Search Icon"
-          className="mt-12 mx-auto w-70 h-70 sm:w-80 sm:h-80"
+          className="lg:mt-16 mt-12 mx-auto w-50 h-50 lg:w-70 lg:h-70"
         />
       </div>
     );

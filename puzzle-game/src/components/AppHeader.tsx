@@ -15,7 +15,7 @@ export function AppHeader() {
               <CardTitle className="text-3xl font-bold text-gray-100">COBISS Puzzle</CardTitle>
               <p className="text-gray-300 mt-1">Sestavi puzzle in spoznaj svetovno literaturo</p>
             </div>
-            <div className="flex gap-3 flex-shrink-0 items-center mr-4">
+            <div className="flex sm:gap-10 flex-shrink-0 items-center mr-4">
               <InstructionsDialog />
               <StatisticsDialog />
             </div>
