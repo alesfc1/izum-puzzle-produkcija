@@ -11,7 +11,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { ScoreResult } from "@/utils/scoringSystem";
 import difficulties from "../../../../db/difficulties.json";
 import ErrorPage from "@/components/ErrorPage";
-import "@/styles/style.css";	
+import "@/styles/style.css";
 
 export default function GamePage() {
   const [stage, setStage] = useState<"pregame" | "game" | "complete">("pregame");
@@ -56,10 +56,10 @@ export default function GamePage() {
   const bookCobiss = async (id: string): Promise<CobissBookResponse> => {
     const response = await fetch(`/api/${id}`);
     const data = await response.json();
-    if(data.error){
+    if (data.error) {
       setResponseStatus(404);
       setResponseMessage(data.error.text);
-    } else if(data.coverUrl == null){
+    } else if (data.coverUrl == null) {
       setResponseStatus(404);
       setResponseMessage("Iskana knjiga nima naslovnice");
     }
@@ -83,20 +83,32 @@ export default function GamePage() {
   }, [id, toast]);
 
   const onBackToSearch = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     window.location.href = "/search";
   }
 
   const openCobiss = (id: string) => {
     if (id !== "" || id !== undefined || id !== null) {
-      const url = "https://plusbeta.cobiss.net/cobiss/si/sl/data/cobib/"
-      window.open(url + id);
+      const cobissurl = "https://plusbeta.cobiss.net/cobiss/si/sl/data/cobib/"
+      window.open(cobissurl + id);
     }
   }
 
   const handleGameComplete = (result: ScoreResult, completionTime: number) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setGameResult(result);
     setCompletionTime(completionTime);
     setStage("complete");
+  }
+
+  const onBackToSelection = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setStage("pregame");
+  }
+
+  const onStart = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setStage("game");
   }
 
   if (stage === "pregame") {
@@ -108,7 +120,7 @@ export default function GamePage() {
           currentBook={currentBook || { id: "", title: "", author: "", coverUrl: "" }}
           selectedDifficulty={selectedDifficulty || { "cols": 2, "rows": 2, "label": "2×2 (Zelo lahko)" }}
           setSelectedDifficulty={setSelectedDifficulty}
-          onStart={() => setStage("game")}
+          onStart={onStart}
           onBackToSearch={onBackToSearch}
           onOpenCobiss={openCobiss}
         />
@@ -122,7 +134,7 @@ export default function GamePage() {
         book={currentBook!}
         difficulty={selectedDifficulty!}
         handleGameComplete={handleGameComplete}
-        onBackToSelection={() => setStage("pregame")}
+        onBackToSelection={onBackToSelection}
       />
     );
   }
@@ -131,9 +143,7 @@ export default function GamePage() {
     return (
       <GameCompleteView
         gameResult={gameResult!}
-        onBackToSelection={() => {
-          setStage("pregame");
-        }}
+        onBackToSelection={onBackToSelection}
         onBackToSearch={onBackToSearch}
         difficulty={selectedDifficulty!}
         completionTime={completionTime}

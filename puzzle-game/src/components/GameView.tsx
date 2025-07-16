@@ -18,7 +18,7 @@ interface Props {
 
 export default function GameCompleteView({ book, difficulty, handleGameComplete, onBackToSelection }: Props) {
   return (
-    <div className="w-full">
+    <div className="w-full mb-7">
       <Card className="shadow-lg border-2 border-gray-700 bg-gray-800 w-full">
         <CardHeader className="pb-4">
           <CardTitle className="text-center text-2xl md:text-3xl text-gray-100 dark:text-gray-100">
@@ -35,7 +35,7 @@ export default function GameCompleteView({ book, difficulty, handleGameComplete,
         </CardContent>
         <CardFooter className="flex justify-center pb-6">
           <div className="text-center mt-6">
-            <Button variant="outline" className='transition-transform duration-300 hover:scale-105 text-gray-800 border-gray-300 hover:border-gray-400 bg-white text-gray-900 hover:bg-gray-300 dark:hover:bg-gray-300' onClick={onBackToSelection}>Nazaj na izbiro knjige</Button>
+            <Button variant="outline" className='transition-transform duration-300 hover:scale-105 text-gray-800 border-gray-300 hover:border-gray-400 bg-white text-gray-900 hover:bg-gray-300 dark:hover:bg-gray-300' onClick={onBackToSelection}>Nazaj na izbiro težavnosti</Button>
           </div>
         </CardFooter>
       </Card>
