@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BookCard from './BookCard';
 import { LoadingSpinner } from './ui/loading-spinner';
 import { Book } from '@/types/book';
@@ -12,6 +12,14 @@ interface BookListProps {
 }
 
 const BookList = ({ books, onBookClick, isSearching, showInitialPrompt }: BookListProps) => {
+  const [hasEverSearched, setHasEverSearched] = useState(false);
+
+  useEffect(() => {
+    if (books.length > 0) {
+      setHasEverSearched(true);
+    }
+  }, [books]);
+
   if (isSearching) {
     return (
       <div className="loading flex items-center justify-center">
@@ -35,7 +43,7 @@ const BookList = ({ books, onBookClick, isSearching, showInitialPrompt }: BookLi
       </div>
     );
   }
-  else if (!isSearching && books.length <= 0) {
+  else if (!isSearching && books.length === 0 && hasEverSearched) {
     return (
       <div className="text-center py-12">
         <div className="text-gray-400 text-lg mb-2">Ni najdenih knjig</div>
