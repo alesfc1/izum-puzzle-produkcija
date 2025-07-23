@@ -41,6 +41,7 @@ Spletna aplikacija za sestavljanje sestavljank iz naslovnic knjig v COBISS Plus.
   - **Radix UI** za dostopne komponente
 
 - **Backend & Shramba**:
+  - **COBISS API** za pridobivanje podatkov o knjigah
   - **Next.js API Routes** za strežniško logiko
   - **LocalStorage** za lokalno shranjevanje statistike
 
@@ -52,36 +53,30 @@ Spletna aplikacija za sestavljanje sestavljank iz naslovnic knjig v COBISS Plus.
 
 ## Navodila za zagon in vzpostavitev sistema
 
-1. **Klonirajte repozitorij**
+1. **Zaženite cplus backend**
+    
+2. **Klonirajte repozitorij**
     ```bash
     git clone https://github.com/alesfc1/izum-puzzle-produkcija
     ```
 
-2. **Premaknite se v mapo projekta**
+3. **Premaknite se v mapo projekta**
     ```bash
-    cd izum-gamification/puzzle-game
+    cd puzzle-game
     ```
 
-3. **Namestite odvisnosti**
+4. **Namestite odvisnosti**
     - Če uporabljate `npm`:
       ```bash
-      npm install --legacy-peer-deps
-      ```
-      ali
-      ```bash
-      yarn install --legacy-peer-deps
+      npm install
       ```
 
-5. **Zaženite razvojni strežnik**
+5. **Zaženite frontend**
     ```bash
     npm run dev
     ```
-    ali
-    ```bash
-    yarn dev
-    ```
     
-7. **Odprite aplikacijo**
+6. **Odprite aplikacijo**
     - Obiščite [http://localhost:3000](http://localhost:3000) v vašem brskalniku.
 
 ## Kontakt
