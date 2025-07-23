@@ -15,6 +15,7 @@ export default function SearchPage() {
   const [currentBook, setCurrentBook] = useState<Book | null>(null);
   const [bookSelection, setBookSelection] = useState(true);
   const [cobissBooks, setCobissBooks] = useState<Book[]>([]);
+  const [responseStatus, setResponseStatus] = useState(200);
   const { toast } = useToast();
 
   // Function to search COBISS and convert results to Book format
@@ -55,6 +56,10 @@ export default function SearchPage() {
   // COBISS API function
   const searchCobiss = async (query: string): Promise<CobissResponse> => {
     const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+    setResponseStatus(response.status);
+    if(response.status === 404) {
+      return { value: { searchItems: [] } };
+    }
     const data = await response.json();
     return {
       ...data,
@@ -113,6 +118,7 @@ export default function SearchPage() {
         onBookClick={handleBookSelect}
         isSearching={isSearching}
         showInitialPrompt={!hasSearched}
+        responseStatus={responseStatus}
       />
     </div>
   );

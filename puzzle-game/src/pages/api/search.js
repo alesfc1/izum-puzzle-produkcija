@@ -10,7 +10,12 @@ export default async function handler(req, res) {
         });
 
         const data = await response.json();
-        res.status(200).json(data);
+
+        if(data.value.hitsNo === 0) {
+            res.status(404).json({ error: "Ni zadetkov" });
+        } else {
+            res.status(200).json(data);
+        }
     } catch (error) {
         console.error("Napaka pri proxyju:", error);
         res.status(500).json({ error: "Proxy napaka" });
