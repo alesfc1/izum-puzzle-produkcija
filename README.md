@@ -2,7 +2,7 @@
 
 ## Project Description
 
-A web application for creating and solving jigsaw puzzles from book covers available in COBISS Plus. Users can select a book cover, which is divided into smaller puzzle pieces. The pieces can then be moved and rotated to reconstruct the original image.
+A web application in Slovenian language for creating and solving jigsaw puzzles from book covers available in COBISS Plus. Users can select a book cover, which is divided into smaller puzzle pieces. The pieces can then be moved and rotated to reconstruct the original image.
 
 The application is responsive and optimized for use across different devices, including desktop computers, tablets, and smartphones.
 
