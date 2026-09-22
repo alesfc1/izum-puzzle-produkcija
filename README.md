@@ -53,7 +53,8 @@ The application is responsive and optimized for use across different devices, in
 
 ## Setup and Installation
 
-1. **Start the CPlus backend** (only available at IZUM!)
+1. **Set up and start the IZUM Cobiss Plus backend**
+  - Clone and start the `izum-puzzle-backend` repository first. For setup instructions, refer to the backend repository's README.
 
 2. **Clone the repository**
    ```bash
